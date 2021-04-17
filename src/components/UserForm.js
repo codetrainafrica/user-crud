@@ -26,7 +26,9 @@ function UserForm(props) {
   function handleSubmit() {
     //we call addUser function passed to this user form component
     //as a prop from the App component
-    props.addUser(state);
+    let userId = 10000 + Math.random() * 10000000;
+    let user = { ...state, id: userId };
+    props.addUser(user);
   }
 
   return (
