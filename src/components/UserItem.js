@@ -10,8 +10,20 @@ function UserItem(props) {
       <div className="col-md-3">{props.user.email}</div>
       <div className="col-md-2">{props.user.country}</div>
       <div className="col-md-4">
-        <button>Update</button>
-        <button>Delete</button>
+        <button
+          onClick={() => {
+            props.update(props.user.id);
+          }}
+        >
+          Update
+        </button>
+        <button
+          onClick={() => {
+            props.delete(props.user.id);
+          }}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
