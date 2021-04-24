@@ -23,6 +23,7 @@ function UserItem(props) {
       <div className="col-md-4">
         <button onClick={showModal}>Edit</button>
 
+        {/* We setup edit user modal */}
         <Modal show={isModalVisible} onHide={hideModal}>
           <Modal.Header closeButton>
             <Modal.Title>Edit User</Modal.Title>
@@ -30,7 +31,7 @@ function UserItem(props) {
           <Modal.Body>
             <EditUserForm
               user={props.user}
-              updateUser={props.updateUser}
+              updateUser={props.updateUser} //we pas down update user function to eidt user form
               hideModal={hideModal}
             />
           </Modal.Body>

@@ -31,10 +31,12 @@ function App() {
     setUsers(newUsers);
   }
 
-  function updateUser(id, newInfo) {
+  //a function to update the users state given a user id and
+  // an updated user information
+  function updateUser(id, updatedUserInfo) {
     let newUsers = users.map((user) => {
       if (user.id === id) {
-        return newInfo;
+        return updatedUserInfo;
       }
       return user;
     });
@@ -54,7 +56,8 @@ function App() {
           <UserList
             allUsers={users}
             delete={deleteUser}
-            updateUser={updateUser}
+            updateUser={updateUser} //we pass down the update function to userlist component.
+            //The goal is to get it in the edit user form
           />
         </div>
       </div>

@@ -12,7 +12,7 @@ function UserList(props) {
         <UserItem
           user={user}
           delete={props.delete}
-          updateUser={props.updateUser}
+          updateUser={props.updateUser} //we pass down update user to user item component.
         />
       ))}
     </div>
