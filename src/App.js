@@ -19,12 +19,6 @@ function App() {
     password: '',
     country: '',
   });
-  //this is a helper function that adds a new user to our users state
-  //we later pass this function to userform component to be called anytime
-  //we want to create a new user
-  function addUser(user) {
-    setUsers([...users, user]);
-  }
 
   function deleteUser(id) {
     let newUsers = users.filter((user) => user.id !== id);
@@ -49,12 +43,11 @@ function App() {
         <div className="col-md-6">
           {/* we pass the addUser function to userform as a props to be called whenever
           we want to create a new user */}
-          <UserForm addUser={addUser} />
+          <UserForm />
         </div>
         <div className="col-md-6">
           {/* we pass the users down to userlist component to be displayed */}
           <UserList
-            allUsers={users}
             delete={deleteUser}
             updateUser={updateUser} //we pass down the update function to userlist component.
             //The goal is to get it in the edit user form
