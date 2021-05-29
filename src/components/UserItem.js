@@ -31,11 +31,7 @@ function UserItem(props) {
             <Modal.Title>Edit User</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <EditUserForm
-              user={props.user}
-              updateUser={props.updateUser} //we pas down update user function to eidt user form
-              hideModal={hideModal}
-            />
+            <EditUserForm user={props.user} hideModal={hideModal} />
           </Modal.Body>
         </Modal>
 

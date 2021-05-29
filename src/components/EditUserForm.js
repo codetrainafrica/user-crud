@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { updateUserAction } from '../actions/userActions';
 
 //user sign up component
 function EditUserForm(props) {
@@ -28,7 +30,7 @@ function EditUserForm(props) {
     //as a prop from the App component
 
     let user = { ...state, id: props.user.id };
-    props.updateUser(props.user.id, user);
+    props.updateUserAction(props.user.id, user);
     props.hideModal();
   }
 
@@ -86,4 +88,9 @@ function EditUserForm(props) {
   );
 }
 
-export default EditUserForm;
+let mapDispatchToProps = {
+  updateUserAction,
+};
+
+let mapStateToProps = () => {};
+export default connect(mapStateToProps, mapDispatchToProps)(EditUserForm);

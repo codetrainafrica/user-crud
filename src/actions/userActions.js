@@ -11,3 +11,10 @@ export function deleteUserAction(id) {
     payload: id,
   };
 }
+
+export function updateUserAction(id, updatedUser) {
+  return {
+    type: 'UPDATE_USER',
+    payload: { id: id, updatedUserInfo: updatedUser },
+  };
+}
