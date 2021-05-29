@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import { addUserAction } from '../actions/userActions';
+import { connect } from 'react-redux';
 //user sign up component
 function UserForm(props) {
   // default user state is an object with empty string as value
@@ -28,7 +29,7 @@ function UserForm(props) {
     //as a prop from the App component
     let userId = 10000 + Math.random() * 10000000;
     let user = { ...state, id: userId };
-    props.addUser(user);
+    props.addUserAction(user);
   }
 
   return (
@@ -84,5 +85,9 @@ function UserForm(props) {
     </div>
   );
 }
-
-export default UserForm;
+// function mapStateToProps(state) {
+//   return {
+//     state: state,
+//   };
+// }
+export default connect(null, { addUserAction })(UserForm);
