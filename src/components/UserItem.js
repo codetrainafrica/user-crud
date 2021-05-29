@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import EditUserForm from './EditUserForm';
+import { connect } from 'react-redux';
+import { deleteUserAction } from '../actions/userActions';
 
 //this component represents a single user that's displayed in the
 //userlist component
@@ -39,7 +41,7 @@ function UserItem(props) {
 
         <button
           onClick={() => {
-            props.delete(props.user.id);
+            props.deleteUserAction(props.user.id);
           }}
         >
           Delete
@@ -49,4 +51,10 @@ function UserItem(props) {
   );
 }
 
-export default UserItem;
+let mapDispatchToProps = {
+  deleteUserAction,
+};
+
+let mapStateToProps = () => {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserItem);

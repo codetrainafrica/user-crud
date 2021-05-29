@@ -4,3 +4,10 @@ export function addUserAction(user) {
     payload: user,
   };
 }
+
+export function deleteUserAction(id) {
+  return {
+    type: 'DELETE_USER',
+    payload: id,
+  };
+}

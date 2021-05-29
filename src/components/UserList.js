@@ -3,7 +3,6 @@ import UserItem from './UserItem';
 import { connect } from 'react-redux';
 //this component displays all the users we have in our users state from App.js
 function UserList(props) {
-  console.log('userList', props);
   return (
     <div>
       {/* we loop through all the users and for every user,
@@ -12,7 +11,6 @@ function UserList(props) {
       {props.users.map((user) => (
         <UserItem
           user={user}
-          delete={props.delete}
           updateUser={props.updateUser} //we pass down update user to user item component.
         />
       ))}

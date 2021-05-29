@@ -20,11 +20,6 @@ function App() {
     country: '',
   });
 
-  function deleteUser(id) {
-    let newUsers = users.filter((user) => user.id !== id);
-    setUsers(newUsers);
-  }
-
   //a function to update the users state given a user id and
   // an updated user information
   function updateUser(id, updatedUserInfo) {
@@ -48,7 +43,6 @@ function App() {
         <div className="col-md-6">
           {/* we pass the users down to userlist component to be displayed */}
           <UserList
-            delete={deleteUser}
             updateUser={updateUser} //we pass down the update function to userlist component.
             //The goal is to get it in the edit user form
           />
