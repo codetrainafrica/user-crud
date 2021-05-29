@@ -1,10 +1,10 @@
-export default function (state = {}, action) {
+const initalState = { users: [] };
+
+export default function (state = initalState, action) {
   switch (action.type) {
     case 'ADD_USER':
-    //code to add user to the state
-    case 'DELETE_USER':
-    //code to delete user
-
+      let newUsers = [...state.users, action.payload];
+      return { users: newUsers };
     default:
       return state;
   }
