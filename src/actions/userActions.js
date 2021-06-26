@@ -6,8 +6,13 @@ export function getAllUsers() {
       .then((results) => {
         let users = [];
         results.forEach((doc) => {
-          // console.log(doc.id, doc.data());
-          users.push(doc.data());
+          //approach 1
+          let user = doc.data();
+          user.id = doc.id;
+          users.push(user);
+
+          //approach 2
+          //users.push({ ...doc.data(), id: doc.id });
         });
 
         dispatch({
@@ -40,15 +45,37 @@ export function addUserAction(user) {
 }
 
 export function deleteUserAction(id) {
-  return {
-    type: 'DELETE_USER',
-    payload: id,
+  return (dispatch, state, { getFirestore }) => {
+    let db = getFirestore();
+    db.collection('users')
+      .doc(id)
+      .delete()
+      .then(() => {
+        dispatch({
+          type: 'DELETE_USER',
+          payload: id,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 }
 
 export function updateUserAction(id, updatedUser) {
-  return {
-    type: 'UPDATE_USER',
-    payload: { id: id, updatedUserInfo: updatedUser },
+  return (dispatch, state, { getFirestore }) => {
+    let db = getFirestore();
+    db.collection('users')
+      .doc(id)
+      .update(updatedUser)
+      .then(() => {
+        dispatch({
+          type: 'UPDATE_USER',
+          payload: { id: id, updatedUserInfo: updatedUser },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 }
