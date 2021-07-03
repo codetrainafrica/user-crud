@@ -1,19 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import UserForm from './components/UserForm';
-import UserList from './components/UserList';
+import Dashboard from './pages/dashboard';
+import Login from './pages/login';
+import Signup from './pages/signup';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-6">
-          <UserForm />
-        </div>
-        <div className="col-md-6">
-          <UserList />
-        </div>
-      </div>
+      <BrowserRouter>
+        <Route path="/" exact component={Dashboard} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+      </BrowserRouter>
     </div>
   );
 }
