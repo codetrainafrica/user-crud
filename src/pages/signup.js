@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { signup } from '../actions/authActions';
+import { Redirect } from 'react-router-dom';
 
 function Signup(props) {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
@@ -13,6 +14,19 @@ function Signup(props) {
   function handleOnSubmit() {
     props.signup(credentials.email, credentials.password);
   }
+
+  //if firebase isLoaded is false
+  //show loading
+  if (props.auth.isLoaded === false) {
+    return <h1>Loading...</h1>;
+  }
+
+  //if a user is logged in
+  //redirect them to dashboard
+  if (props.auth.isEmpty === false) {
+    return <Redirect path="/" />;
+  }
+
   return (
     <div style={{ fontSize: 50 }}>
       <form>
@@ -36,5 +50,11 @@ function Signup(props) {
   );
 }
 
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebaseState.auth,
+  };
+};
+
 const mapDispatchToProps = { signup };
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
